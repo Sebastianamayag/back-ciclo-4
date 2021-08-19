@@ -11,7 +11,7 @@ app.get("/editorial",async(req,res)=>{
 
 app.post("/editorial",async(req,res)=>{
     if(req.body.nombre){
-        Editorial.create(req.body);
+        Editorial.create({nombre_editorial:req.body});
         res.status(200).json({success:"Editorial creado correctamente"});
     }else{
         res.status(400).json({ error: 'Todos los campos deben estar llenos' })
