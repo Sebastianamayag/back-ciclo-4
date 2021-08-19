@@ -5,7 +5,7 @@ module.exports=(sequelize,type)=>{
             autoIncrement: true,
             primaryKey: true
         },
-        nombre_editorial:{
+        nombre:{
             type:type.STRING,
             allownull:false
         }
