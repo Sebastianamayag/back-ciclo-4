@@ -5,8 +5,8 @@ const Model_Cetegorias=require('../models/Categorias');
 const Model_Editorial=require('../models/Editorial');
 const Model_Libros=require('../models/Libros');
 //configuracion de la url de la bd
-const sequelize = new Sequelize('bthjfpyzlqydbsyf8auc', 'ufxcucgalo6k3kjr', 'degpTjWVXq2sXkMjeDMo', {
-    host: 'bthjfpyzlqydbsyf8auc-mysql.services.clever-cloud.com',
+const sequelize = new Sequelize('btdpvkgly7p94oa64ivj', 'uhibvwtve2j9bu3t', 'iD0JOwED1JOdgMfVUE4t', {
+    host: 'btdpvkgly7p94oa64ivj-mysql.services.clever-cloud.com',
     dialect: 'mysql'
 });
 //creando la tablas tablas
