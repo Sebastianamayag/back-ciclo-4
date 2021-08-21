@@ -62,11 +62,11 @@ app.put("/libro/:id",async(req,res)=>{
     if(req.params.id){
         if(req.body.precio && req.body.cantidad){
             const libros=await Libros.findOne({where:{id:req.params.id}})
-            if(libros){
+            if(libros && libros.cantidad>req.body.cantidad ){
                 Libros.update(
                     {
                         precio: req.body.precio,
-                        cantidad: req.body.cantidad,
+                        cantidad:libros.cantidad- req.body.cantidad,
                         // imagen:req.body.imagen
                     },
                     { 
@@ -79,7 +79,7 @@ app.put("/libro/:id",async(req,res)=>{
                 ).catch((error) => { res.status(400).json({ error});})
             }
             else{
-                res.status(400).json({ "error": `No se ha encontrado el libro con el id: ${req.params.id}` })
+                res.status(400).json({ "error": `No se ha encontrado el libro con el id: ${req.params.id} o no hay la cantidad en stock disponible` })
             }
         }else{
             res.status(400).json({ error: 'Todos los campos deben estar llenos' })
