@@ -62,7 +62,7 @@ app.put("/libro",async(req,res)=>{
     if(req.body.id){
         if(req.body.precio && req.body.cantidad){
             const libros=await Libros.findOne({where:{id:req.body.id}})
-            if(libros && libros.cantidad>=req.body.cantidad ){
+            if(libros){
                 Libros.update(
                     {
                         precio: req.body.precio,
