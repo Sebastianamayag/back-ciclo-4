@@ -58,10 +58,10 @@ app.post("/producto/imagen",async(req,res)=>{
 
 })
 
-app.put("/libro/:id",async(req,res)=>{
-    if(req.params.id){
+app.put("/libro",async(req,res)=>{
+    if(req.body.id){
         if(req.body.precio && req.body.cantidad){
-            const libros=await Libros.findOne({where:{id:req.params.id}})
+            const libros=await Libros.findOne({where:{id:req.body.id}})
             if(libros && libros.cantidad>=req.body.cantidad ){
                 Libros.update(
                     {
@@ -89,9 +89,9 @@ app.put("/libro/:id",async(req,res)=>{
     }
 })
 
-app.delete("/libro/:id",async(req,res)=>{
-    if(req.params.id){
-        const libros = await Libros.findOne({ where: { id: req.params.id } });
+app.delete("/libro",async(req,res)=>{
+    if(req.body.id){
+        const libros = await Libros.findOne({ where: { id: req.body.id } });
         if(libros){
             libros.destroy().then(() => {
                 res.status(200).json({ mensaje: "Libro Eliminado" });
