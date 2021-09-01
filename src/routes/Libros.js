@@ -33,7 +33,7 @@ app.get("/libros/buscar",async(req,res)=>{
 
 app.post("/libro",async(req,res)=>{
     if(req.body.titulo && req.body.ano && req.body.descripcion && req.body.precio && req.body.cantidad && req.body.imagen){
-        Libro.create(req.body);
+        Libros.create(req.body);
         res.status(200).json({success:"Libro creado correctamente"});    
     }else{
         res.status(400).json({ error: 'Todos los campos deben estar llenos' })
