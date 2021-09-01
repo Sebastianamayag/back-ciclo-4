@@ -75,7 +75,7 @@ app.put("/libro",async(req,res)=>{
                             id: req.body.id
                         }
                     }
-                ).then(() => { res.json({ mensaje:'Libro actualizado'});}
+                ).then(() => { res.status(200).json({ mensaje:'Libro actualizado'});}
                 ).catch((error) => { res.status(400).json({ error});})
             }
             else{
