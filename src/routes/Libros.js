@@ -17,9 +17,9 @@ app.get("/libros",async(req,res)=>{
     res.status(200).json({  libros });
   });
 })
-app.get("/libros/:id",async(req,res)=>{
-    if(req.params.id){
-        const libros=await Libros.findOne({where:{id:req.params.id},include: [{ model: Authors }, { model: Categorias }, { model: Editorial }],attributes: {exclude: ['AuthorId','CategoryId','EditorialId']}})
+app.get("/libros/buscar",async(req,res)=>{
+    if(req.body.id){
+        const libros=await Libros.findOne({where:{id:req.body.id},include: [{ model: Authors }, { model: Categorias }, { model: Editorial }],attributes: {exclude: ['AuthorId','CategoryId','EditorialId']}})
         if(libros){
             res.status(200).json({products: libros});
         }
@@ -62,7 +62,7 @@ app.put("/libro/:id",async(req,res)=>{
     if(req.params.id){
         if(req.body.precio && req.body.cantidad){
             const libros=await Libros.findOne({where:{id:req.params.id}})
-            if(libros && libros.cantidad>req.body.cantidad ){
+            if(libros && libros.cantidad>=req.body.cantidad ){
                 Libros.update(
                     {
                         precio: req.body.precio,
