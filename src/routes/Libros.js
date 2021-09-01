@@ -79,7 +79,7 @@ app.put("/libro",async(req,res)=>{
                 ).catch((error) => { res.status(400).json({ error});})
             }
             else{
-                res.status(400).json({ error: `No se ha encontrado el libro con el id: ${req.params.id} o no hay la cantidad en stock disponible` })
+                res.status(400).json({ error: `No se ha encontrado el libro con el id: ${req.body.id} o no hay la cantidad en stock disponible` })
             }
         }else{
             res.status(400).json({ error: 'Todos los campos deben estar llenos' })
