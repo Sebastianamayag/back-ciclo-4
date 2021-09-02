@@ -32,7 +32,7 @@ app.get("/libros/buscar",async(req,res)=>{
 })
 
 app.post("/libro",async(req,res)=>{
-    if(req.body.titulo && req.body.ano && req.body.descripcion && req.body.precio && req.body.cantidad && req.body.imagen){
+    if(req.body.titulo && req.body.ano && req.body.descripcion && req.body.precio && req.body.cantidad && req.body.imagen && req.body.AuthorId  && req.body.CategoryId && req.body.EditorialId){
         Libros.create(req.body);
         res.status(200).json({success:"Libro creado correctamente"});    
     }else{
