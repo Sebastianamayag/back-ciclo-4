@@ -119,8 +119,8 @@ app.put("/libros/cantidad",async(req,res)=>{
 })
 
 app.delete("/libro",async(req,res)=>{
-    if(req.body.id){
-        const libros = await Libros.findOne({ where: { id: req.body.id } });
+    if(req.query.id){
+        const libros = await Libros.findOne({ where: { id: req.query.id } });
         if(libros){
             libros.destroy().then(() => {
                 res.status(200).json({ mensaje: "Libro Eliminado" });
